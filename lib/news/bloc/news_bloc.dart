@@ -16,7 +16,7 @@ class NewsBloc extends Bloc<NewsEvent, NewsState> {
   Stream<NewsState> mapEventToState(NewsEvent event) async* {
     if (event is FetchNews) {
       try {
-        final articles = await newsRepository.getNews();
+        final articles = await newsRepository.getSavedNews();
         yield Content(articles: articles);
       } catch (_) {
         yield Error();
